@@ -1,14 +1,34 @@
-const User = require("./User");
 
-class Scooter extends User {
+class Scooter {
 
-  constructor(station, user, serial, nextSerial = 1, charge = 100, isBroken = false){
-    user = super(username)
+
+  static nextSerial = 1 
+  constructor(station){
     this.station = station
-    nextSerial = serial
-    this.charge = charge
-    this.isBroken = isBroken
+    this.user = null
+    this.serial = Scooter.nextSerial++
+    this.charge = 100
+    this.isBroken = false
   }
+
+  rent(user){
+    if ( charge <= 20 ) throw new Error('Scooter needs to charge.')
+    if(this.isBroken) throw new Error('scooter needs repair.')
+    this.station = null
+    this.user = user
+    console.log('scooter is rented')
+    
+  }
+
+  dock(station){
+    this.station = station
+    this.user = null
+    console.log('scooter is docked')
+  }
+
+
+
+
 }
 
 module.exports = Scooter;
